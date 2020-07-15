@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои заметки и мероприятия</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.chunk %>">
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+            crossorigin="anonymous"
+    />
+    <style>
+        #app {
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+    <script src="<%= htmlWebpackPlugin.files.chunk %>"></script>
+
+</body>
+</html>
