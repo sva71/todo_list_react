@@ -43,6 +43,6 @@
     "html-webpack-plugin": "^4.2.0",
     "postcss-loader": "^3.0.0",
     "autoprefixer": "^9.7.6",
-    "aphrodite": "^2.4.0"
+    "lodash": ">=4.17.19"
   }
 }
