@@ -86,12 +86,14 @@ module.exports = {
 
     plugins: [
         new WebpackMd5Hash(),
-        new CopyWebpackPlugin([
-            {
-                from: path.resolve(__dirname, 'dev/static'),
-                to: path.resolve(__dirname, 'site')
-            }
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './dev/static'),
+                    to: path.resolve(__dirname, './site')
+                }
+            ]
+        }),
         new HtmlWebpackPlugin({
             template: "./dev/template/index.html",
             filename: "index.html"
