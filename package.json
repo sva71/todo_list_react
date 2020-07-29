@@ -1,7 +1,7 @@
 {
-  "name": "news-guestbook",
+  "name": "todo-list-react",
   "version": "1.0.0",
-  "description": "Guestbook with last news",
+  "description": "Articles with todo-lists",
   "main": "index.js",
   "scripts": {
     "clear": "npm i && npm run dev",
