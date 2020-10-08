@@ -73,9 +73,11 @@ module.exports = {
                     {
                         loader: "postcss-loader",
                         options: {
-                            plugins: [
-                                require("autoprefixer")()
-                            ]
+                            postcssOptions: {
+                                plugins: [
+                                    require("autoprefixer")()
+                                ]
+                            }
                         }
                     },
                     "sass-loader"
@@ -89,8 +91,8 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, './dev/static'),
-                    to: path.resolve(__dirname, './site')
+                    from: path.resolve(__dirname, 'dev/static'),
+                    to: path.resolve(__dirname, 'site')
                 }
             ]
         }),
