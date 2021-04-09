@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
 
 import Icon from '../Icon';
 import Hint from '../Hint';
@@ -16,14 +17,13 @@ const Item = ({ id, title, list}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [visible, setVisible] = useState(2);
-    const [iconName, setIconName] = useState('down');
-    const [expandTitle, setExpandTitle] = useState('Показать все');
+    const list2 = list.slice(0, 2);
+    const listFull = list.length > 2 ? list.slice(2, list.length) : [];
+
+    const [expandText, setExpandText] = useState('Еще...');
 
     const expandPressed = () => {
-        visible < list.length ? setVisible(list.length) : setVisible(2);
-        iconName === 'down' ? setIconName('up') : setIconName('down');
-        expandTitle === 'Показать все' ? setExpandTitle('Свернуть') : setExpandTitle('Показать все');
+        expandText === 'Еще...' ? setExpandText('Свернуть') : setExpandText('Еще...');
     }
     
     const deleteModal = useOkCancelModal('Внимание!',() => (
@@ -50,8 +50,7 @@ const Item = ({ id, title, list}) => {
                 <hr/>
 
                 <ul>
-                    {list
-                        .filter((item, index) => index <= visible - 1)
+                    {list2
                         .map((item, index) => <li key={index}>
                         <div className={style['icon-wrapper']}>
                             {item.done ?
@@ -64,16 +63,36 @@ const Item = ({ id, title, list}) => {
                 </ul>
 
                 {(list.length > 2) && (
-                    <Hint placement="top" caption={expandTitle}>
-                        <Button variant="light" block size="sm" onClick={expandPressed}>
-                            <Icon name={iconName} />
-                        </Button>
-                    </Hint>
+                    <Accordion defaultActiveKey="0">
+                        <Card className={style['accordion']}>
+                            <Accordion.Collapse eventKey="1">
+                                <Card.Body className={style['accordion-body']}>
+                                    <ul>
+                                        {listFull
+                                            .map((item, index) => <li key={index}>
+                                                <div className={style['icon-wrapper']}>
+                                                    {item.done ?
+                                                        <div className={style['check-icon']}>
+                                                            <Icon name="check" />
+                                                        </div> : <></>}
+                                                </div>
+                                                {item.text}
+                                            </li>)}
+                                    </ul>
+                                </Card.Body>
+                            </Accordion.Collapse>
+                            <Card.Header className={style['accordion']}>
+                                <Accordion.Toggle as={Button} variant="outline-secondary" eventKey="1" onClick={expandPressed}>
+                                    {expandText}
+                                </Accordion.Toggle>
+                            </Card.Header>
+                        </Card>
+                    </Accordion>
                 )}
 
                 <hr/>
 
-                <Button variant="outline-primary" onClick={() => history.push(`/articles/${id}`)}>
+                <Button variant="secondary" onClick={() => history.push(`/articles/${id}`)}>
                     Редактировать
                 </Button>
 

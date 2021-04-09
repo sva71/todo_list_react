@@ -1,9 +1,14 @@
 .home
   display: flex
-  justify-content: center
+  justify-content: flex-start
   flex-wrap: wrap
+  min-height: 80vh
   width: 80%
   margin: auto
+  padding: 2rem
+  border-radius: 1rem
+  backdrop-filter: blur(2rem)
+  background-color: rgba(255, 255, 255, 0.1)
 
 .icon-wrapper
   display: flex
@@ -15,8 +20,9 @@
   width: 30px
   height: 30px
   cursor: pointer
+  color: #CCCCCC
   &:hover
-    color: mediumblue
+    color: white
 
 .articles
   display: flex

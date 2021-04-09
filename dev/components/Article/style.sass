@@ -1,3 +1,9 @@
+#input-card-1, #input-card-2, #input-card-3
+  color: #CCCCCC
+  border-radius: 1rem
+  backdrop-filter: blur(2rem) !important
+  background-color: rgba(255, 255, 255, 0.1) !important
+
 .wrapper
   width: 100%
   display: flex
@@ -11,13 +17,13 @@
   justify-content: flex-start
   padding: 5px
 
-.icon-delete
+.icon-delete, .button-main
   width: 20px
   height: 20px
   margin-left: 5px
   cursor: pointer
   &:hover
-    color: red
+    color: white
 
 .button-main
   width: 30px
@@ -26,5 +32,6 @@
   top: 5px
   right: 5px
   cursor: pointer
+  stroke: #CCCCCC
   &:hover
-    stroke: red
+    stroke: white

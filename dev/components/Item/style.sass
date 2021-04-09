@@ -1,5 +1,8 @@
 .article-card
   margin: 10px
+  padding: 1rem
+  border-radius: 1rem
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
   .card-list
     display: flex
     justify-content: flex-start
@@ -9,6 +12,7 @@
     align-items: flex-start
     justify-content: flex-start
     padding: 0
+    margin-bottom: 0
     li
       display: flex
       list-style-type: none
@@ -16,14 +20,21 @@
     position: absolute
     width: 16px
     height: 16px
-    top: 5px
-    right: 5px
+    top: 1rem
+    right: 1rem
     cursor: pointer
     &:hover
-      color: red
+      color: white
     svg
       vertical-align: top
   .icon-wrapper
     width: 20px
   .check-icon
     stroke: green
+
+.accordion
+  background: rgba(255, 255, 255, 0)
+  border: none
+
+.accordion-body
+  padding: 0

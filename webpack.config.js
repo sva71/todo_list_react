@@ -1,7 +1,6 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
-const WebpackMd5Hash = require("webpack-md5-hash");
 const HtmlWebpackPlugin = require ("html-webpack-plugin");
 
 const env = process.env.NODE_ENV || 'development';
@@ -13,7 +12,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, "site"),
-        filename: "bundle.[chunkhash].js"
+        filename: "bundle.[contenthash].js"
     },
 
     mode: env,
@@ -26,7 +25,9 @@ module.exports = {
         contentBase: path.resolve(__dirname, "site"),
         host: "localhost",
         port: 9090,
-        historyApiFallback: true
+        historyApiFallback: true,
+        overlay: true,
+        open: true
     },
 
     module: {
@@ -37,7 +38,7 @@ module.exports = {
 
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"],
+                        presets: ["@babel/preset-env", ["@babel/preset-react", {"runtime": "automatic"}]],
                         plugins: ["@babel/plugin-proposal-class-properties"]
                     }
                 }
@@ -50,7 +51,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|jpeg|webp)$/,
+                test: /\.(png|gif|jpg|jpeg|webp)$/,
                 use: {
                     loader: "file-loader",
                     options: {
@@ -87,7 +88,6 @@ module.exports = {
     },
 
     plugins: [
-        new WebpackMd5Hash(),
         new CopyWebpackPlugin({
             patterns: [
                 {
@@ -101,7 +101,7 @@ module.exports = {
             filename: "index.html"
         }),
         new MiniCSSExtractPlugin({
-            filename: 'style.[chunkhash].css'
+            filename: 'style.[contenthash].css'
             }
         ),
     ]

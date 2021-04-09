@@ -138,7 +138,7 @@ const Article = (props) => {
 
             <Form className={style.article} onChange={(e) => formChanged(e)}>
 
-                <Card className="bg-light" id="input-card-1">
+                <Card className="bg-light" id={style["input-card-1"]}>
                     <Card.Body >
 
                         <div className={style['button-main']} onClick={deleteModal.show}>
@@ -154,7 +154,7 @@ const Article = (props) => {
                                 placeholder="Заголовок"
                                 value={localArticle.title}
                                 onChange={titleChanged} />
-                                <Form.Text className="text-muted">Озаглавьте ваш todo-список как-нибудь</Form.Text>
+                                <p>Озаглавьте ваш todo-список как-нибудь</p>
                         </Form.Group>
 
                     </Card.Body>
@@ -162,7 +162,7 @@ const Article = (props) => {
 
                 <hr />
 
-                <Card className="bg-light" id="input-card-2">
+                <Card className="bg-light" id={style["input-card-2"]}>
                     <Card.Body>
 
                         <Form.Group id="input-group-2">
@@ -191,7 +191,7 @@ const Article = (props) => {
 
                 <hr />
 
-                <Card className="bg-light" id="input-card-3">
+                <Card className="bg-light" id={style["input-card-3"]}>
                     <Card.Body>
 
                         <Form.Group id="input-group-3">
