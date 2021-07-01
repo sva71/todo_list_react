@@ -17,8 +17,6 @@ module.exports = {
 
     mode: env,
 
-    watch: isDev,
-
     devtool: isDev && "eval-source-map",
 
     devServer: {
